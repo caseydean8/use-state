@@ -1,21 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "../../components/Container";
 import Col from "../../components/Col";
 import Row from "../../components/Row";
 
-const Signup = (props) => {
-  // Moved handleSubmit to app.js
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log(props.name, props.password);
-  // };
+const Signup = () => {
+  const [signUpState, setSignUpState] = useState({
+    username: "",
+    password: "",
+  });
+
+  function handleChange(e) {
+    setSignUpState({
+      ...signUpState,
+      [e.target.name]: e.target.value,
+    });
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(signUpState.username, signUpState.password);
+  };
+
 
   return (
     <div>
       <div className="mt-4">
         <h2>Sign Up</h2>
       </div>
-      <form onSubmit={props.onSubmit} onChange={props.onChange}>
+      <form onSubmit={handleSubmit} onChange={handleChange}>
         <Container className="mt-3 px-5">
           <Row className="form-group">
             <Col size="12">
@@ -42,10 +54,10 @@ const Signup = (props) => {
           </button>
         </Container>
         <Container className="mt-4">
-          <h3>{props.name}</h3>
+          <h3>{signUpState.username}</h3>
           <p>
             I probably shouldn't tell you this, but your password is{" "}
-            {props.password}!
+            {signUpState.password}!
           </p>
         </Container>
       </form>
