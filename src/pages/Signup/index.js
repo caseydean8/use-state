@@ -4,18 +4,18 @@ import Col from "../../components/Col";
 import Row from "../../components/Row";
 
 const Signup = (props) => {
-  console.log(props);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(props.name, props.password);
-  };
+  // Moved handleSubmit to app.js
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log(props.name, props.password);
+  // };
 
   return (
     <div>
       <div className="mt-4">
         <h2>Sign Up</h2>
       </div>
-      <form onSubmit={handleSubmit} onChange={props.onChange}>
+      <form onSubmit={props.onSubmit} onChange={props.onChange}>
         <Container className="mt-3 px-5">
           <Row className="form-group">
             <Col size="12">

@@ -11,9 +11,14 @@ function App() {
   function handleChange(e) {
     setSignUpState({
       ...signUpState,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(signUpState.username, signUpState.password);
+  };
 
   return (
     <div className="App">
@@ -21,6 +26,7 @@ function App() {
         name={signUpState.username}
         password={signUpState.password}
         onChange={handleChange}
+        onSubmit={handleSubmit}
       />
     </div>
   );
